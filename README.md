@@ -1,2 +1,2 @@
-# SCUM_str_lvling
-SCUM strength levelling applet
+# SCUM_Stength-Leveler
+SCUM strength levelling applet using a wheelbarrow
