@@ -32,13 +32,16 @@ class KeySimulator:
             if pressed:
                 if self.keys_pressed:
                     self.keys_pressed = False
+                    # Stop key pressing
                     for key in ['d', 'w']:
                         pyautogui.keyUp(key)
                     print("Key pressing stopped.")
+                    
                 else:
                     self.keys_pressed = True
                     # Scroll down the mouse wheel 10 clicks to reduce speed
                     pyautogui.scroll(-10)
+                    # Start key pressing
                     for key in ['d', 'w']:
                         pyautogui.keyDown(key)
                     print("Key pressing started.")
