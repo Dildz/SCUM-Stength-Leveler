@@ -55,6 +55,13 @@ def format_time(seconds):
         return f"{seconds}s"
 
 
+# Function for stopping
+def apply_brakes():
+    pyautogui.keyDown('space')
+    time.sleep(0.5)  # Hold spacebar to stop
+    pyautogui.keyUp('space')
+
+
 # Calibrated mode cycling function
 def calibrated_cycling():
     global calibrated_running
@@ -77,6 +84,7 @@ def calibrated_cycling():
         # Stop cycling
         pyautogui.keyUp('d')
         pyautogui.keyUp('w')
+        apply_brakes()
         
         if not calibrated_running:
             break
@@ -113,6 +121,7 @@ class KeySimulator:
                         # Stop key pressing
                         for key in ['d', 'w']:
                             pyautogui.keyUp(key)
+                        apply_brakes()
                         
                         # Stop and display timer
                         if normal_mode_timer_running:
@@ -138,6 +147,11 @@ class KeySimulator:
                     # Calibrated mode toggle
                     if calibrated_running:
                         calibrated_running = False
+                        # Apply brakes when stopping calibrated mode
+                        for key in ['d', 'w']:
+                            pyautogui.keyUp(key)
+                        apply_brakes()
+                        
                         if calibration_thread and calibration_thread.is_alive():
                             calibration_thread.join(timeout=1.0)
                         print("[CALIBRATED MODE] Cycling stopped.")
@@ -206,12 +220,4 @@ def main():
 
 # Run the script
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\n\nProgram interrupted by user. Exiting...")
-        # Clean up - release any pressed keys
-        for key in ['d', 'w']:
-            pyautogui.keyUp(key)
-        time.sleep(3)
-        sys.exit(0)
+    main()
