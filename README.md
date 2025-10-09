@@ -1,8 +1,10 @@
-# SCUM-Stength-Leveler
+# SCUM-Stength-Leveller
 SCUM strength levelling applet using a bicycle.
 
 ## How it works:
-Uses the middle mouse button (scrollwheel press) to continually press D+W keys. Now with two modes: Normal and Calibrated.
+Uses the middle mouse button (scrollwheel press) to continually press D+W keys.
+
+Now with two modes: Normal and Calibrated.
 
 ## Things you will need:
 - Flat surface to ride the bicycle on (3x3 foundations work well)
